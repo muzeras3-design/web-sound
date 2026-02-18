@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Sound Button App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .sound-btn {
+            padding: 20px;
+            font-size: 16px;
+            background: #ff3c3c;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .sound-btn:hover {
+            background: #ff6b6b;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+<h1>🎵 My Sound Effects</h1>
+
+<div class="container">
+    <button class="sound-btn" onclick="playSound('sound1')">Explosion</button>
+    <button class="sound-btn" onclick="playSound('sound2')">Laugh</button>
+    <button class="sound-btn" onclick="playSound('sound3')">Airhorn</button>
+    <button class="sound-btn" onclick="playSound('sound4')">Piano</button>
+    <button class="sound-btn" onclick="playSound('sound5')">Fart</button>
+    <button class="sound-btn" onclick="playSound('sound6')">Boom</button>
+
+</div>
+
+<!-- Audio Files -->
+<audio id="sound1" src="sounds/explosion.mp3"></audio>
+<audio id="sound2" src="sounds/laugh.mp3"></audio>
+<audio id="sound3" src="sounds/airhorn.mp3"></audio>
+<audio id="sound4" src="sounds/piano.mp3"></audio>
+<audio id="sound5" src="sounds/fart.mp3"></audio>
+<audio id="sound6" src="sounds/boom.mp3"></audio>
+
+<script>
+    function playSound(id) {
+        const audio = document.getElementById(id);
+        audio.currentTime = 0;
+        audio.play();
+    }
+</script>
+
+</body>
+</html>
