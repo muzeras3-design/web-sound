@@ -1,46 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>My Sound Button App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sound Effects</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #111;
-            color: white;
-            text-align: center;
+        * {
+            box-sizing: border-box;
         }
 
-        h1 {
-            margin-top: 20px;
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #121212;
+            color: white;
+        }
+
+        header {
+            padding: 20px;
+            text-align: center;
+            background: #1e1e1e;
+            font-size: 20px;
+            font-weight: bold;
         }
 
         .container {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             gap: 15px;
-            padding: 20px;
+            padding: 15px;
+        }
+
+        /* Desktop */
+        @media (min-width: 900px) {
+            .container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 600px) and (max-width: 899px) {
+            .container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 599px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .sound-btn {
-            padding: 20px;
+            padding: 25px;
             font-size: 16px;
-            background: #ff3c3c;
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
+            background: linear-gradient(145deg, #ff3c3c, #cc0000);
             color: white;
-            transition: 0.2s;
+            font-weight: bold;
+            transition: 0.15s;
         }
 
-        .sound-btn:hover {
-            background: #ff6b6b;
-            transform: scale(1.05);
+        .sound-btn:active {
+            transform: scale(0.95);
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            opacity: 0.6;
         }
     </style>
 </head>
+
 <body>
 
-<h1>🎵 My Sound Effects</h1>
+<header>🎵 My Sound Effects</header>
 
 <div class="container">
     <button class="sound-btn" onclick="playSound('sound1')">Explosion</button>
@@ -50,8 +89,6 @@
     <button class="sound-btn" onclick="playSound('sound5')">Fart</button>
     <button class="sound-btn" onclick="playSound('sound6')">Boom</button>
 
-</div>
-
 <!-- Audio Files -->
 <audio id="sound1" src="sounds/explosion.mp3"></audio>
 <audio id="sound2" src="sounds/laugh.mp3"></audio>
@@ -59,6 +96,10 @@
 <audio id="sound4" src="sounds/piano.mp3"></audio>
 <audio id="sound5" src="sounds/fart.mp3"></audio>
 <audio id="sound6" src="sounds/boom.mp3"></audio>
+
+<footer>
+    Simple Soundboard App © 2026
+</footer>
 
 <script>
     function playSound(id) {
