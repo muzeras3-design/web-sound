@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tombol Misterius</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        /* clamp(minimum, fleksibel, maksimum) */
+        h1 {
+            font-size: clamp(20px, 5vw, 40px);
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: clamp(16px, 4vw, 24px);
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        #popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 999;
+        }
+
+        #popup img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .shake {
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(0, 0); }
+            20% { transform: translate(-15px, 10px); }
+            40% { transform: translate(15px, -10px); }
+            60% { transform: translate(-15px, 10px); }
+            80% { transform: translate(15px, -10px); }
+            100% { transform: translate(0, 0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>⚠ Jangan Klik Tombol Ini ⚠</h1>
+    <button onclick="showScare()">Klik Jika Berani</button>
+
+    <div id="popup">
+        <img src="images/scary.jpg" alt="Scary">
+        <audio id="scream" src="scream.mp3"></audio>
+    </div>
+
+    <script>
+        function showScare() {
+            document.getElementById("popup").style.display = "block";
+            document.getElementById("scream").play();
+
+            document.body.classList.add("shake");
+
+            setTimeout(function() {
+                document.body.classList.remove("shake");
+            }, 500);
+        }
+    </script>
+
+</body>
+</html>
